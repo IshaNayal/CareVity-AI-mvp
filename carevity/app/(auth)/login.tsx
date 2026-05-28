@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, SafeAreaView, Switch } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, SafeAreaView, Switch, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { users } from '../../lib/db';
@@ -16,9 +16,9 @@ export default function LoginScreen() {
     setLoading(true);
     const user = users.get(email);
     if (user && user.password === password) {
-      router.replace('/(tabs)');
+      router.replace('/assessment');
     } else {
-      alert.alert('Login Failed', 'Invalid credentials');
+      Alert.alert('Login Failed', 'Invalid credentials');
     }
     setLoading(false);
   };
